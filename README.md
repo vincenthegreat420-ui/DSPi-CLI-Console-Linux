@@ -71,7 +71,7 @@ The DSPi is a USB Audio Class device with a physical S/PDIF output. Without a
 DSPi-specific card profile, PipeWire can expose it as two outputs (analog and
 digital) and the digital output volume control may not work correctly.
 
-The files in `alsa-card-profile/` install a card profile, mixer path, and udev
+The files in `pipewire-card-profile/` install a card profile, mixer path, and udev
 rule that make PipeWire use a single `Digital Stereo (IEC958)` profile for the
 DSPi and expose the USB Audio hardware volume control on the digital output.
 
@@ -79,12 +79,14 @@ DSPi and expose the USB Audio hardware volume control on the digital output.
 > `ACP_PROFILE_SET` udev property and the `~/.config/alsa-card-profile` search
 > path). It does not take effect under the classic PulseAudio daemon, which uses
 > a different udev property (`PULSE_PROFILE_SET`) and config directory. PipeWire
-> is the default on current Fedora, Ubuntu, Debian and Arch.
+> is the default audio server on most current mainstream desktops, including
+> Fedora, Ubuntu, Pop!_OS, Linux Mint, Debian and openSUSE Tumbleweed, and is
+> the standard choice on Arch.
 
 Install the profile:
 
 ```sh
-cd alsa-card-profile
+cd pipewire-card-profile
 ./install-dspi-profile.sh
 ```
 
@@ -116,7 +118,7 @@ appear as a single digital output.
 Remove the profile:
 
 ```sh
-cd alsa-card-profile
+cd pipewire-card-profile
 ./uninstall-dspi-profile.sh
 ```
 
