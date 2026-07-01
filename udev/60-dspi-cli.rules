@@ -1,0 +1,2 @@
+# DSPi CLI vendor interface.
+SUBSYSTEM=="usb", ATTR{idVendor}=="2e8b", ATTR{idProduct}=="feaa", MODE="0660", TAG+="uaccess"
