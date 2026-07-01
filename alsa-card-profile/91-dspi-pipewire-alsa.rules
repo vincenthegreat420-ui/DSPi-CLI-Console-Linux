@@ -1,4 +1,4 @@
-# Use the DSPi-specific PipeWire/PulseAudio ALSA card profile.
+# Use the DSPi-specific PipeWire ALSA card profile.
 
 SUBSYSTEM!="sound", GOTO="dspi_pipewire_end"
 ACTION!="change", GOTO="dspi_pipewire_end"
