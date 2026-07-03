@@ -1,0 +1,31 @@
+name: Build Project
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Скачиваем код
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Запускаем сборку
+    - name: Run Build
+      run: |
+        Build
+        make
+
+    # 3. Сохраняем готовый файл, чтобы его можно было скачать
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      
+       
+        # Укажите путь к файлу, который получается после команды make.
+        # Например: ./my_program или ./build/output_file
+        
