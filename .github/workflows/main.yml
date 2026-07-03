@@ -11,21 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Скачиваем код
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 2. Запускаем сборку
+    # Пытаемся собрать проект стандартным make
     - name: Run Build
       run: |
-        Build
         make
 
-    # 3. Сохраняем готовый файл, чтобы его можно было скачать
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
-      
-       
-        # Укажите путь к файлу, который получается после команды make.
-        # Например: ./my_program или ./build/output_file
-        
+      with:
+        name: my-compiled-program
+        # Символ ловит все измененные или созданные файлы, 
+        # чтобы мы точно не пропустили готовую программу
+        path: .
