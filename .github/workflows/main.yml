@@ -14,15 +14,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Пытаемся собрать проект стандартным make
+    # Устанавливаем необходимые зависимости для Ubuntu
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential pkg-config libusb-1.0-0-dev
+
+    # Запускаем сборку
     - name: Run Build
       run: |
         make
 
+    # Сохраняем результат
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: my-compiled-program
-        # Символ ловит все измененные или созданные файлы, 
-        # чтобы мы точно не пропустили готовую программу
         path: .
